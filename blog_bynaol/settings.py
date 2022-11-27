@@ -29,7 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['bynaol.com', 'www.bynaol.com', '127.0.0.1', 'blog.bynaol.com', 'www.blogbynaol.com']
 
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = [
