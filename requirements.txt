@@ -3,3 +3,4 @@ ipykernel
 Pillow
 mysqlclient
 mysql-connector-python
+whitenoise
