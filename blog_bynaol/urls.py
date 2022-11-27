@@ -23,9 +23,9 @@ from blog.sitemap import PostSitemap
 blog_sitemap = {'posts': PostSitemap}
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('blog.urls')),
+    path('admin/', admin.site.urls),
     path(
-        'sitemap.xml', sitemap, {"sitemaps": blog_sitemap}, name='django.contrib.sitemaps.views.sitemap'
+        'sitemap.xml', sitemap, {"sitemaps": blog_sitemap}, name='django.contrib.sitemaps.views.sitemap1'
     ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # static serving for production
