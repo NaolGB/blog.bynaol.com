@@ -13,6 +13,10 @@ def about(request):
     return render(request, 'blog/about.html')
 
 def blog(request, slug):
+    context = {
+        
+    }
+
     title = Blog.objects.get(slug=slug).title
 
     text = Blog.objects.get(slug=slug).content
@@ -30,7 +34,8 @@ def blog(request, slug):
         'subsections': subsections,
         'conclusion': conclusion,
         'written_on': date,
-        'image_name': image_name
+        'image_name': image_name,
+        'blogs': Blog.objects.order_by('?')[:3]
     }
 
     return render(request, 'blog/blog.html', context)
