@@ -29,6 +29,7 @@ def blog(request, slug):
     date = blog.written_on
     image_name = blog.image.name
     description = blog.description
+    description = description.replace(' ', '-')
 
     context = {
         'title': title,
