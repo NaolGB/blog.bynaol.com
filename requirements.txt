@@ -4,4 +4,3 @@ Pillow
 mysqlclient
 mysql-connector-python
 whitenoise
-django-alttext
