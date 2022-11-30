@@ -16,17 +16,19 @@ def blog(request, slug):
     context = {
         
     }
+    blog = Blog.objects.get(slug=slug)
 
-    title = Blog.objects.get(slug=slug).title
+    title = blog.title
 
-    text = Blog.objects.get(slug=slug).content
+    text = blog.content
     text_js = json.loads(text)
 
     intro = text_js['intro']
     subsections = text_js['subsections']
     conclusion = text_js['conclusion']
-    date = Blog.objects.get(slug=slug).written_on
-    image_name = Blog.objects.get(slug=slug).image.name
+    date = blog.written_on
+    image_name = blog.image.name
+    description = blog.description
 
     context = {
         'title': title,
@@ -35,7 +37,8 @@ def blog(request, slug):
         'conclusion': conclusion,
         'written_on': date,
         'image_name': image_name,
-        'blogs': Blog.objects.order_by('?')[:3]
+        'blogs': Blog.objects.order_by('?')[:3],
+        'description' : description
     }
 
     return render(request, 'blog/blog.html', context)
