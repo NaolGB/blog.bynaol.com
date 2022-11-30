@@ -5,7 +5,8 @@ import json
 
 def home(request):
     context = {
-        'blogs': Blog.objects.all().order_by('?')
+        'all_blogs': Blog.objects.all().order_by('?'),
+        'top_blogs': Blog.objects.all()[:8]
     }
     return render(request, 'blog/home.html', context=context)
 
