@@ -4,14 +4,20 @@ import json
 
 
 def home(request):
+    description = "Health and Fitness blog providing helpful tips and strategies on how to live a healthier lifestyle and reach your fitness goals. Get advice on diet, exercise, and healthy habits."
     context = {
         'all_blogs': Blog.objects.all().order_by('?'),
-        'top_blogs': Blog.objects.all()[:8]
+        'top_blogs': Blog.objects.all()[:8],
+        'description' : description
     }
     return render(request, 'blog/home.html', context=context)
 
 def about(request):
-    return render(request, 'blog/about.html')
+    description = "Health and Fitness blog dedicated to helping people achieve their health and fitness goals. Get the latest tips, advice, and exercises to help you get in shape, stay active, and stay healthy."
+    context = {
+        'description' : description
+    }
+    return render(request, 'blog/about.html', context=context)
 
 def blog(request, slug):
     context = {
