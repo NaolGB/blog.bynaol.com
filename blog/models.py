@@ -6,6 +6,7 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=256, unique=True)
     description = models.CharField(max_length=1024)
     content = models.TextField()
+    published = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/')
     written_on = models.DateField(auto_now_add=True)
 
