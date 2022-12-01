@@ -6,8 +6,8 @@ import json
 def home(request):
     description = "Health-and-Fitness-blog-offering-expert-advice-on-everything-from-diet-and-nutrition-to-exercise-tips-and-healthy-lifestyle-habits-to-help-you-reach-your-goals."
     context = {
-        'all_blogs': Blog.objects.all().order_by('?'),
-        'top_blogs': Blog.objects.all()[:8],
+        'all_blogs': Blog.objects.filter(published=True).order_by('?'),
+        'top_blogs': Blog.objects.filter(published=True)[:8],
         'description' : description
     }
     return render(request, 'blog/home.html', context=context)
