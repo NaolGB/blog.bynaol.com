@@ -9,6 +9,7 @@ class Blog(models.Model):
     published = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images/')
     written_on = models.DateField(auto_now_add=True)
+    num_views = models.BigIntegerField(default=0)
 
     def __str__(self) -> str:
         return self.title

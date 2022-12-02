@@ -7,7 +7,7 @@ def home(request):
     description = "Health-and-Fitness-blog-offering-expert-advice-on-everything-from-diet-and-nutrition-to-exercise-tips-and-healthy-lifestyle-habits-to-help-you-reach-your-goals."
     context = {
         'all_blogs': Blog.objects.filter(published=True).order_by('?'),
-        'top_blogs': Blog.objects.filter(published=True)[:8],
+        'top_blogs': Blog.objects.filter(published=True).order_by('?')[:8],
         'description' : description
     }
     return render(request, 'blog/home.html', context=context)
@@ -24,6 +24,10 @@ def blog(request, slug):
         
     }
     blog = Blog.objects.get(slug=slug)
+
+    # update the num_views field
+    blog.num_views = int(blog.num_views) + 1
+    blog.save(update_fields=['num_views'])
 
     title = blog.title
 
