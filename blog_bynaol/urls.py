@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemap import PostSitemap
 
+
 blog_sitemap = {'posts': PostSitemap}
 
 urlpatterns = [
@@ -29,3 +30,8 @@ urlpatterns = [
         'sitemap.xml', sitemap, {"sitemaps": blog_sitemap}, name='django.contrib.sitemaps.views.sitemap1'
     ),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # static serving for production
+
+
+# errors pages
+handler500 = 'blog_bynaol.views.error500'
+handler404 = 'blog_bynaol.views.error404'

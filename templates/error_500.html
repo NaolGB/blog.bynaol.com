@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}
+<div class='text-center row'>
+    <div class='col'>
+    </div>
+
+    <div class='col-10'>
+        <div class='row gy-3'>
+            <div class='fs-6 fw-light'>
+                {{written_on}}
+            </div>
+            <div class='display-5'>
+                <strong>Hmmmm... seems there's an error. And we are working on it! </strong>
+            </div>
+                <div class='pb-4 mt-5'>
+                    <strong>:( that an error 500</strong>
+                </div>
+        </div>
+    </div>
+
+    <div class='col'>
+    </div>
+</div>
+{% endblock title %}
+
+{% block content %}
+    <div class='pb-4'>
+        <strong>In the mean time, here are some good articles we suggest</strong>
+    </div>
+    <div class="d-flex justify-content-around flex-wrap gap-3">
+        {% for b in top_blogs %}
+            <div class="card border-1" style="width: 18rem;" style="background: #12fe43;">
+                <img src="{% static b.image.name %}" class="card-img-top" alt={{b.image.name}} >
+                <div class="card-body">
+                    <h5 class="card-title">{{b.title}}</h5>
+                    <a href="{% url 'blog_blog' b.slug %}">Read</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+
+{% endblock content %}
